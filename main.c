@@ -10,18 +10,12 @@ void print_array(int array[], int length) {
 }
 
 void calculate_and_print_swaps(int array[], int length) {
-    int swaps[length];
-
-    for (int i = 0; i < length; i++) {
-        swaps[i] = 0;
-    }
-
     // Do a bubble sort
     for (int i = 0; i < length - 1; i++) {
+        int swaps = 0;
         for (int j = 0; j < length - i - 1; j++) {
             if (array[j] > array[j + 1]) {
-                swaps[j] += 1;
-
+                swaps++;
                 // I'm not sure if the professor wants us to count the other index we are switching too or not
                 // We could do that by uncommenting the following line:
                 // swaps[j + 1] += 1;
@@ -31,14 +25,9 @@ void calculate_and_print_swaps(int array[], int length) {
                 array[j]        = array[j] ^ array[j + 1];
             }
         }
-    }
 
-    // Print out the swap info
-    printf("Swaps:\n");
-    for (int i = 0; i < length; i++) {
-        printf("%d ", swaps[i]);
+        printf("Pass %d: %d swaps\n", i, swaps);
     }
-    printf("\n");
 }
 
 int main() {
